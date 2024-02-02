@@ -15,6 +15,7 @@ new Vue({
             plannedTasks: [],
             inProgressTasks: [],
             testingTasks: [],
+            completedTasks: [],
         }
     },
     methods:{
@@ -47,6 +48,10 @@ new Vue({
         moveToTesting(taskIndex) {
             const taskToMove = this.inProgressTasks.splice(taskIndex, 1)[0];
             this.testingTasks.push(taskToMove);
+        },
+        moveToCompleted(taskIndex) {
+            const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            this.completedTasks.push(taskToMove);
         },
     }
 })
