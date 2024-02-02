@@ -7,7 +7,8 @@ new Vue({
                 description: '',
                 deadline: '',
                 createdAt: new Date().toLocaleString(),
-                lastEdited: null
+                lastEdited: null,
+                returnReason: null
             },
             editedTask: null,
             editedTaskIndex: null,
@@ -53,5 +54,13 @@ new Vue({
             const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
             this.completedTasks.push(taskToMove);
         },
+        returnToInProgress(taskIndex) {
+            if (!this.testingTasks[taskIndex].returnReason) {
+                alert('Пожалуйста, укажите причину возврата.');
+                return;
+            }
+            const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            this.inProgressTasks.push(taskToMove);
+        }
     }
 })

@@ -92,7 +92,10 @@
                     <p>Дата создания: {{ task.createdAt }}</p>
                     <p>Последнее редактирование: {{ task.lastEdited }}</p>
                     <button @click="startEditing(index, 'testingTasks')">Редактировать</button>
-                    <button @click="moveToCompleted(index)">Переместить в выполненное</button>                
+                    <button @click="moveToCompleted(index)">Переместить в выполненное</button> 
+                    <button @click="returnToInProgress(index)">Вернуть в работу</button>
+                    <label for="returnReason">Причина возврата:</label>
+                    <input id="returnReason" type="text" v-model="task.returnReason">               
                 </div>
                 <div v-else>
                     <form @submit.prevent="finishEditing(index, 'testingTasks')">
