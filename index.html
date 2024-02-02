@@ -12,6 +12,13 @@
     <div id="app">
         <div class="column">
             <h2>Запланированные задачи</h2>
+            <form @submit.prevent="addTask">
+                <input type="date" v-model="newTask.createdAt" placeholder="Дата создания">
+                <input type="text" v-model="newTask.title" placeholder="Заголовок задачи">
+                <textarea v-model="newTask.description" placeholder="Описание задачи"></textarea>
+                <input type="date" v-model="newTask.deadline" placeholder="Дэдлайн">
+                <button type="submit">Добавить задачу</button>
+            </form>
         </div>
         <div class="column">
             <h2>Задачи в работе</h2>
