@@ -63,7 +63,8 @@
                     <p>Дэдлайн: {{ task.deadline }}</p>
                     <p>Дата создания: {{ task.createdAt }}</p>
                     <p>Последнее редактирование: {{ task.lastEdited }}</p>
-                    <button @click="startEditing(index, 'inProgressTasks')">Редактировать</button>                
+                    <button @click="startEditing(index, 'inProgressTasks')">Редактировать</button>
+                    <button @click="moveToTesting(index)">Отправить в тестирование</button>                
                 </div>
                 <div v-else>
                     <form @submit.prevent="finishEditing(index)">
@@ -83,8 +84,31 @@
         </div>
         <div class="column">
             <h2>Тестирование</h2>
-            
-        </div>
+            <div v-for="(task, index) in testingTasks" :key="index">
+                <div v-if="editedTaskIndex !== index || editedColumn !== 'testingTasks'">
+                    <h3>{{ task.title }}</h3>
+                    <p>{{ task.description }}</p>
+                    <p>Дэдлайн: {{ task.deadline }}</p>
+                    <p>Дата создания: {{ task.createdAt }}</p>
+                    <p>Последнее редактирование: {{ task.lastEdited }}</p>
+                    <button @click="startEditing(index, 'testingTasks')">Редактировать</button>                
+                </div>
+                <div v-else>
+                    <form @submit.prevent="finishEditing(index, 'testingTasks')">
+                        <label for="editTitle">Заголовок задачи:</label>
+                        <input id="editTitle" type="text" v-model="editedTask.title">
+                        
+                        <label for="editDescription">Описание задачи:</label>
+                        <textarea id="editDescription" v-model="editedTask.description"></textarea>
+                        
+                        <label for="editDeadline">Дэдлайн:</label>
+                        <input id="editDeadline" type="date" v-model="editedTask.deadline">
+                        
+                        <button type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>        
         <div class="column">
             <h2>Выполненные задачи</h2>
         </div>
