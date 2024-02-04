@@ -8,7 +8,8 @@ new Vue({
                 deadline: '',
                 createdAt: new Date().toLocaleString(),
                 lastEdited: null,
-                returnReason: null
+                returnReason: null,
+                isOverdue: false
             },
             editedTask: null,
             editedTaskIndex: null,
@@ -52,6 +53,7 @@ new Vue({
         },
         moveToCompleted(taskIndex) {
             const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            taskToMove.isOverdue = new Date(taskToMove.deadline) < new Date();
             this.completedTasks.push(taskToMove);
         },
         returnToInProgress(taskIndex) {
