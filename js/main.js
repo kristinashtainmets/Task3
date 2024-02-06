@@ -22,6 +22,14 @@ new Vue({
     },
     methods:{
         addTask() {
+            if (!this.newTask.deadline) {
+                alert('Пожалуйста, укажите дэдлайн.');
+                return;
+            }
+            if (new Date(this.newTask.deadline) <= new Date(this.newTask.createdAt)) {
+                alert('Дэдлайн не может быть раньше даты создания или равен ей.');
+                return;
+            }
             this.plannedTasks.push({...this.newTask});
             this.newTask = { title: '', description: '', deadline: '', createdAt: new Date().toLocaleString(), lastEdited: null };
         },

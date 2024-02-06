@@ -33,7 +33,42 @@ form button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #007BFF;
+    background-color: #9b59b6; 
     color: white;
     cursor: pointer;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1c40f;
+    color: white;
+    cursor: pointer;
+}
+
+.delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c; 
+    color: white;
+    cursor: pointer;
+}
+
+.move-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2ecc71; 
+    color: white;
+    cursor: pointer;
+}
+
+.return-reason-input {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
 }

@@ -34,8 +34,7 @@
                     <p>Дэдлайн: {{ task.deadline }}</p>
                     <p>Дата создания: {{ task.createdAt }}</p>
                     <p>Последнее редактирование: {{ task.lastEdited }}</p>
-                    <button @click="startEditing(index, 'plannedTasks')">Редактировать</button>                
-                </div>
+                    <button class="edit-button" @click="startEditing(index, 'plannedTasks')">Редактировать</button>                </div>
                 <div v-else>
                     <form @submit.prevent="finishEditing(index)">
                         <label for="editTitle">Заголовок задачи:</label>
@@ -50,8 +49,8 @@
                         <button type="submit">Сохранить</button>
                     </form>
                 </div>                
-                    <button @click="deleteTask(index)">Удалить</button>
-                    <button @click="moveToInProgress(index)">Переместить в работу</button>
+                    <button class="delete-button" @click="deleteTask(index)">Удалить</button>
+                    <button class="move-button" @click="moveToInProgress(index)">Переместить в работу</button>
                 </div>
             </div>
         <div class="column">
@@ -63,8 +62,8 @@
                     <p>Дэдлайн: {{ task.deadline }}</p>
                     <p>Дата создания: {{ task.createdAt }}</p>
                     <p>Последнее редактирование: {{ task.lastEdited }}</p>
-                    <button @click="startEditing(index, 'inProgressTasks')">Редактировать</button>
-                    <button @click="moveToTesting(index)">Отправить в тестирование</button>                
+                    <button class="edit-button" @click="startEditing(index, 'inProgressTasks')">Редактировать</button>
+                    <button class="move-button" @click="moveToTesting(index)">Отправить в тестирование</button>                
                 </div>
                 <div v-else>
                     <form @submit.prevent="finishEditing(index)">
@@ -91,11 +90,11 @@
                     <p>Дэдлайн: {{ task.deadline }}</p>
                     <p>Дата создания: {{ task.createdAt }}</p>
                     <p>Последнее редактирование: {{ task.lastEdited }}</p>
-                    <button @click="startEditing(index, 'testingTasks')">Редактировать</button>
-                    <button @click="moveToCompleted(index)">Переместить в выполненное</button> 
-                    <button @click="returnToInProgress(index)">Вернуть в работу</button>
-                    <label for="returnReason">Причина возврата:</label>
-                    <input id="returnReason" type="text" v-model="task.returnReason">               
+                    <button class="edit-button" @click="startEditing(index, 'testingTasks')">Редактировать</button>                    
+                    <button class="move-button" @click="moveToCompleted(index)">Переместить в выполненное</button> 
+                    <button class="move-button" @click="returnToInProgress(index)">Вернуть в работу</button>
+                    <label for="returnReason"><br>Причина возврата:</label>
+                    <input class="return-reason-input" id="returnReason" type="text" v-model="task.returnReason">               
                 </div>
                 <div v-else>
                     <form @submit.prevent="finishEditing(index, 'testingTasks')">
